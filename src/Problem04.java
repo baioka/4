@@ -1,6 +1,23 @@
-public class Problem04 { // number of provinces
-    public int findProvinceNum(int[][] isConnected) {
-        // write your solution here
-        return 0;
+public class Problem04 {
+    public int findCircleNum(int[][] isConnected) {
+        int n = isConnected.length;
+        boolean[] visited = new boolean[n];
+        int provinces = 0;
+        for (int i = 0; i < n; i++) {
+            if (!visited[i]) {
+                dfs(isConnected, visited, i);
+                provinces++;
+            }
+        }
+        return provinces;
+    }
+
+    private void dfs(int[][] isConnected, boolean[] visited, int node) {
+        visited[node] = true;
+        for (int neighbor = 0; neighbor < isConnected.length; neighbor++) {
+            if (isConnected[node][neighbor] == 1 && !visited[neighbor]) {
+                dfs(isConnected, visited, neighbor);
+            }
+        }
     }
 }
