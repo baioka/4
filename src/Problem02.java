@@ -1,6 +1,8 @@
 public class Problem02 {
     public int findCenter(int[][] edges) {
-        // write your solution here
-        return -1;
+        if (edges[0][0] == edges[1][0] || edges[0][0] == edges[1][1]) {
+            return edges[0][0];
+        }
+        return edges[0][1];
     }
 }
